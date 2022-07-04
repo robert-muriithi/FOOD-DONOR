@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">FOODONOR</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_to_foodonor">Welcome to FOODONOR</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="dont_have_an_account">Dont have an account?</string>
+    <string name="register">Register</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="phone_number">Phone number</string>
+    <string name="name">Name</string>
+    <string name="already_having_an_account">Already having an account?</string>
+    <string name="fill_in_the_details_to_create_account">Fill in the details to create account</string>
+    <string name="loading">Loading..</string>
 </resources>
