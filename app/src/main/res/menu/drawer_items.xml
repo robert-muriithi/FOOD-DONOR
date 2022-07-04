@@ -1,4 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single" >
+        <item
+            android:id="@+id/action_help"
+            android:title="@string/help"
+            android:icon="@drawable/ic_help"
+            />
+        <item
+            android:id="@+id/nav_calender"
+            android:title="@string/my_pins"
+            android:icon="@drawable/ic_pins"
+            />
+    </group>
+
+    <item android:title="@string/communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:title="@string/share"
+                android:icon="@drawable/ic_share"
+                />
+            <item
+                android:id="@+id/action_feedback"
+                android:title="@string/feedback"
+                android:icon="@drawable/ic_feedback"
+                />
+
+            <item
+                android:id="@+id/action_logout"
+                android:title="@string/logout"
+                android:icon="@drawable/ic_logout"
+                />
+        </menu>
+    </item>
 
 </menu>
