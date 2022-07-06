@@ -5,6 +5,10 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <permission android:name="android.permission.ACCESS_FINE_LOCATION"
+        android:protectionLevel="signature" />
+
 
     <application
         android:allowBackup="true"
@@ -16,6 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FOODONOR"
         tools:targetApi="31">
+
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCUtZQamwKp53YhIbSs_Vh6TIrDox3Cda4"/>
+
         <activity
             android:name=".activities.SplashActivity"
             android:exported="true" >

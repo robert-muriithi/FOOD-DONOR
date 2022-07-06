@@ -28,6 +28,9 @@ class HomeFragment : Fragment() {
         binding.cardDonate.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_donateFragment)
         }
+        binding.cardReceive.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_receiveFragment)
+        }
 
         return view
     }

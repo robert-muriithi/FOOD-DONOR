@@ -25,4 +25,7 @@
     <string name="contact_us">Contact Us</string>
     <string name="history">History</string>
     <string name="about_us">About Us</string>
+    <string name="submit">Submit</string>
+    <string name="description">Description</string>
+    <string name="receiver_name">Receiver name</string>
 </resources>

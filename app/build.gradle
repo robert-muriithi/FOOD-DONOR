@@ -60,6 +60,15 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.13.0'
 
+    //Google maps
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+
+    implementation "com.google.android.gms:play-services-location:20.0.0"
+    implementation "com.google.android.gms:play-services-places:17.0.0"
+
+    //GeoFire
+    implementation 'com.firebase:geofire-android:3.0.0'
+
 
 
 }
