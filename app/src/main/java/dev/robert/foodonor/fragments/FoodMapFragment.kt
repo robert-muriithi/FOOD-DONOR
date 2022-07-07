@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import dagger.hilt.android.AndroidEntryPoint
 import dev.robert.foodonor.R
 import dev.robert.foodonor.databinding.FragmentFoodMapBinding
 
+@AndroidEntryPoint
 class FoodMapFragment : Fragment() {
    private lateinit var binding: FragmentFoodMapBinding
     override fun onCreateView(

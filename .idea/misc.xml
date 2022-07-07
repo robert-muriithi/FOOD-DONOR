@@ -4,18 +4,44 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/btn_background.xml" value="0.138" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_about.xml" value="0.1835" />
         <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.138" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_baseline_contact_support_24.xml" value="0.1835" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.1835" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_customer_service_svgrepo_com.xml" value="0.1835" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_donate.xml" value="0.1535" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_exit_logout_svgrepo_com.xml" value="0.1835" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_feedback.xml" value="0.1535" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_fooddonation.xml" value="0.1915" />
         <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_foodonor.xml" value="0.138" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_giving.xml" value="0.1915" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_group_people_svgrepo_com.xml" value="0.1535" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_help.xml" value="0.1535" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_location_svgrepo_com.xml" value="0.1835" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_person.xml" value="0.1535" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_phone.xml" value="0.1535" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_pin_map_location_svgrepo_com.xml" value="0.1535" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_pins.xml" value="0.1535" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_receive.xml" value="0.1835" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_share.xml" value="0.1535" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/ic_yellow_curve.xml" value="0.1915" />
         <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/drawable/progress.xml" value="0.17" />
         <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/custom_dialog.xml" value="0.2" />
-        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/fragment_donate.xml" value="0.2" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/donations_row_layout.xml" value="0.25" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/fragment_donate.xml" value="0.25" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/fragment_donations.xml" value="0.33" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/fragment_pins.xml" value="0.2" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/fragment_receive.xml" value="0.2" />
         <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
-        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/fragment_welcome.xml" value="0.22" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/fragment_splash.xml" value="0.2" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/fragment_welcome.xml" value="0.25" />
         <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/nav_header_items.xml" value="0.19895833333333332" />
-        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/menu/drawer_items.xml" value="0.2" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/recycler_item.xml" value="0.19895833333333332" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/menu/drawer_items.xml" value="0.5" />
       </map>
     </option>
   </component>
