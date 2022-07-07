@@ -11,12 +11,13 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import dagger.hilt.android.AndroidEntryPoint
 import dev.robert.foodonor.R
 import dev.robert.foodonor.activities.MainActivity
-import dev.robert.foodonor.data.User
+import dev.robert.foodonor.model.User
 import dev.robert.foodonor.databinding.FragmentSignUpBinding
 import dev.robert.foodonor.utils.CheckInternet
-
+@AndroidEntryPoint
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignUpBinding
     private lateinit var auth: FirebaseAuth

@@ -6,18 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import dagger.hilt.android.AndroidEntryPoint
 import dev.robert.foodonor.R
-import dev.robert.foodonor.activities.MainActivity
-import dev.robert.foodonor.data.User
+import dev.robert.foodonor.model.User
 import dev.robert.foodonor.databinding.FragmentLoginBinding
 import dev.robert.foodonor.utils.CheckInternet
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var auth: FirebaseAuth
@@ -31,7 +33,8 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
-        (activity as MainActivity).supportActionBar?.hide()
+
+        (activity as AppCompatActivity).supportActionBar?.hide()
 
         auth = FirebaseAuth.getInstance()
         firebaseDatabase = FirebaseDatabase.getInstance()
@@ -109,6 +112,8 @@ class LoginFragment : Fragment() {
                                         }else {
                                             binding.progressCircular.isVisible = false
                                             Toast.makeText(requireContext(), "Please verify your email", Toast.LENGTH_SHORT).show()
+                                            binding.emailTinputLayout.editText?.text?.clear()
+                                            binding.passwordInputLayout.editText?.text?.clear()
                                         }
                                     } else {
                                         binding.progressCircular.isVisible = false

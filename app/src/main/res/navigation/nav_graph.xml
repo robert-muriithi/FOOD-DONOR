@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -20,6 +20,12 @@
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_donationsFragment"
+            app:destination="@id/donationsFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -32,6 +38,7 @@
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -64,13 +71,29 @@
         android:label="Food map"
         tools:layout="@layout/fragment_food_map" />
     <fragment
-        android:id="@+id/pinsFragment"
-        android:name="dev.robert.foodonor.fragments.PinsFragment"
-        android:label="My pins"
-        tools:layout="@layout/fragment_pins" />
-    <fragment
         android:id="@+id/historyFragment"
         android:name="dev.robert.foodonor.fragments.HistoryFragment"
         android:label="History"
         tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="dev.robert.foodonor.fragments.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/donationsFragment"
+        android:name="dev.robert.foodonor.fragments.DonationsFragment"
+        android:label="fragment_donations"
+        tools:layout="@layout/fragment_donations" />
 </navigation>

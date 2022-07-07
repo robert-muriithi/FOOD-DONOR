@@ -17,9 +17,10 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import dagger.hilt.android.AndroidEntryPoint
 import dev.robert.foodonor.R
 import dev.robert.foodonor.databinding.ActivityMainBinding
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.donateFragment,
                 R.id.receiveFragment,
                 R.id.foodMapFragment,
-                R.id.pinsFragment,
+                R.id.donationsFragment,
                 R.id.historyFragment,
                 R.id.aboutUsFragment,
             ), drawerLayout

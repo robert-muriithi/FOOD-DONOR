@@ -1,4 +1,4 @@
-package dev.robert.foodonor.data
+package dev.robert.foodonor.model
 
 data class User(
     val email: String = "",

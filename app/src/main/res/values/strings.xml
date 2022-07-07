@@ -28,4 +28,7 @@
     <string name="submit">Submit</string>
     <string name="description">Description</string>
     <string name="receiver_name">Receiver name</string>
+    <string name="food_item">Food item</string>
+    <string name="lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_eiusmod_tempor_incididunt_ut_labore_et_dolore_magna_aliqua">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="donated_food_item">Donated Food Item</string>
 </resources>
