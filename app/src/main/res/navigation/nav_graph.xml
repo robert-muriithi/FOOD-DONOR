@@ -40,6 +40,9 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -94,6 +97,10 @@
     <fragment
         android:id="@+id/donationsFragment"
         android:name="dev.robert.foodonor.fragments.DonationsFragment"
-        android:label="fragment_donations"
+        android:label="Donations"
         tools:layout="@layout/fragment_donations" />
+    <dialog
+        android:id="@+id/resetPasswordFragment"
+        android:name="dev.robert.foodonor.fragments.ResetPasswordFragment"
+        android:label="ResetPasswordFragment" />
 </navigation>

@@ -2,6 +2,7 @@ package dev.robert.foodonor.fragments
 
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.common.ConnectionResult
@@ -47,10 +49,10 @@ class DonateFragment : Fragment(),
     private lateinit var mapFragment: SupportMapFragment
     private lateinit var auth: FirebaseAuth
     private lateinit var database: FirebaseDatabase
-    private lateinit var databaseReference: DatabaseReference
     private lateinit var reference: DatabaseReference
     private lateinit var userID: String
 
+    @SuppressLint("RestrictedApi")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,11 +60,12 @@ class DonateFragment : Fragment(),
         // Inflate the layout for this fragment
         binding = FragmentDonateBinding.inflate(inflater, container, false)
         val view = binding.root
+        (activity as AppCompatActivity).supportActionBar?.setDefaultDisplayHomeAsUpEnabled(true)
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         userID = auth.currentUser!!.uid
-        reference = database.getReference("Donations").child(userID)
+        reference = database.getReference("Donations")
         mapFragment = childFragmentManager.findFragmentById(R.id.google_map) as SupportMapFragment
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
@@ -176,7 +179,7 @@ class DonateFragment : Fragment(),
                     // val serverTimestamp = FirebaseDatabase.getInstance().app.options.
                     val donation =
                         Donation(userID, donorName, foodItem, phoneNumber, address, geoPoint)
-                    reference.child(donorName).setValue(donation)
+                    reference.child("Donations by $donorName").setValue(donation)
                         .addOnSuccessListener {
                             Toast.makeText(
                                 requireContext(),

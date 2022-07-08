@@ -108,6 +108,7 @@ class SignUpFragment : Fragment() {
                             }
                             .addOnFailureListener {
                                 binding.progressCircular.isVisible = false
+                                binding.btnRegister.isEnabled = true
                                 Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                             }
                     }

@@ -1,11 +1,14 @@
 package dev.robert.foodonor.activities
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -20,18 +23,21 @@ import com.google.firebase.database.FirebaseDatabase
 import dagger.hilt.android.AndroidEntryPoint
 import dev.robert.foodonor.R
 import dev.robert.foodonor.databinding.ActivityMainBinding
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var auth: FirebaseAuth
-    private lateinit var firebaseDatabase : FirebaseDatabase
+    private lateinit var firebaseDatabase: FirebaseDatabase
     private lateinit var databaseReference: DatabaseReference
+
+    @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         setSupportActionBar(binding.toolbar)
 
         auth = FirebaseAuth.getInstance()
@@ -54,6 +60,23 @@ class MainActivity : AppCompatActivity() {
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            if (destination.id in listOf(R.id.splashFragment)) {
+                supportActionBar?.hide()
+            }
+            if (destination.id in listOf(
+                    R.id.donateFragment,
+                    R.id.receiveFragment,
+                    R.id.donationsFragment,
+                    R.id.foodMapFragment,
+                    R.id.historyFragment,
+                    R.id.aboutUsFragment
+                )
+            ) {
+                supportActionBar?.show()
+                supportActionBar?.setDefaultDisplayHomeAsUpEnabled(true)
+            }
+        }
 
         val header = binding.navigationView.getHeaderView(0)
         val imageView = header.findViewById<ImageView>(R.id.imageView)

@@ -25,7 +25,7 @@ class SplashFragment : Fragment() {
         binding = FragmentSplashBinding.inflate(inflater, container, false)
         val view = binding.root
         //(activity as AppCompatActivity).supportActionBar?.hide()
-        activity?.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        /*activity?.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN*/
         auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
 

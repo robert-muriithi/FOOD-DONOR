@@ -34,6 +34,7 @@ class LoginFragment : Fragment() {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
 
+
         (activity as AppCompatActivity).supportActionBar?.hide()
 
         auth = FirebaseAuth.getInstance()
@@ -41,6 +42,9 @@ class LoginFragment : Fragment() {
 
         binding.registerTv.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
+        }
+        binding.forgotPasswordTv.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_resetPasswordFragment)
         }
 
         binding.btnLogin.setOnClickListener {
@@ -70,14 +74,14 @@ class LoginFragment : Fragment() {
                     binding.btnLogin.isEnabled = false
 
                         if (CheckInternet.isConnected(requireActivity())) {
-                            Toast.makeText(activity, "Internet is available", Toast.LENGTH_SHORT).show()
+                            //Toast.makeText(activity, "Internet is available", Toast.LENGTH_SHORT).show()
                             binding.emailTinputLayout.isEnabled = false
                             binding.passwordInputLayout.isEnabled = false
                             binding.progressCircular.isVisible = true
                             auth.signInWithEmailAndPassword(email, password)
                                 .addOnCompleteListener(requireActivity()) { task ->
+                                    val currentUser = auth.currentUser
                                     if (task.isSuccessful) {
-                                        val currentUser = auth.currentUser
                                         if(currentUser!!.isEmailVerified){
                                             databaseReference = FirebaseDatabase.getInstance().getReference("Users")
                                             val firebaseUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
@@ -100,6 +104,11 @@ class LoginFragment : Fragment() {
 
                                                         override fun onCancelled(error: DatabaseError) {
                                                             binding.progressCircular.isVisible = false
+                                                            binding.btnLogin.isEnabled = true
+                                                            binding.emailTinputLayout.editText?.text?.clear()
+                                                            binding.passwordInputLayout.editText?.text?.clear()
+                                                            binding.emailTinputLayout.isEnabled = true
+                                                            binding.passwordInputLayout.isEnabled = true
                                                             Toast.makeText(
                                                                 activity,
                                                                 "Error: ${error.message}",
@@ -114,9 +123,16 @@ class LoginFragment : Fragment() {
                                             Toast.makeText(requireContext(), "Please verify your email", Toast.LENGTH_SHORT).show()
                                             binding.emailTinputLayout.editText?.text?.clear()
                                             binding.passwordInputLayout.editText?.text?.clear()
+                                            binding.emailTinputLayout.isEnabled = true
+                                            binding.passwordInputLayout.isEnabled = true
                                         }
                                     } else {
                                         binding.progressCircular.isVisible = false
+                                        binding.btnLogin.isEnabled = true
+                                        binding.emailTinputLayout.editText?.text?.clear()
+                                        binding.passwordInputLayout.editText?.text?.clear()
+                                        binding.emailTinputLayout.isEnabled = true
+                                        binding.passwordInputLayout.isEnabled = true
                                         Toast.makeText(
                                             activity,
                                             "Error: ${task.exception?.message}",
