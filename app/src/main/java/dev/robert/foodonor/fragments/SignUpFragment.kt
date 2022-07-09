@@ -17,11 +17,12 @@ import dev.robert.foodonor.activities.MainActivity
 import dev.robert.foodonor.model.User
 import dev.robert.foodonor.databinding.FragmentSignUpBinding
 import dev.robert.foodonor.utils.CheckInternet
+
 @AndroidEntryPoint
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignUpBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var firebaseDatabase : FirebaseDatabase
+    private lateinit var firebaseDatabase: FirebaseDatabase
     private lateinit var databaseReference: DatabaseReference
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -82,12 +83,12 @@ class SignUpFragment : Fragment() {
 
                     Toast.makeText(requireContext(), "Registering", Toast.LENGTH_SHORT).show()
 
-                    if (CheckInternet.isConnected(requireContext())){
+                    if (CheckInternet.isConnected(requireContext())) {
                         //Toast.makeText(activity, "Internet is available", Toast.LENGTH_SHORT).show()
                         binding.progressCircular.isVisible = true
                         auth.createUserWithEmailAndPassword(email, password)
                             .addOnCompleteListener {
-                                if (it.isSuccessful){
+                                if (it.isSuccessful) {
                                     val currentUser = auth.currentUser
                                     binding.progressCircular.isVisible = false
                                     currentUser?.sendEmailVerification()?.addOnCompleteListener {
@@ -99,17 +100,22 @@ class SignUpFragment : Fragment() {
                                     }
                                     val userId = currentUser?.uid
                                     val user =
-                                        userId?.let { id -> User(email, name, phone,  id) }
+                                        userId?.let { id -> User(email, name, phone, id) }
                                     if (userId != null) {
                                         databaseReference.child(userId).setValue(user)
-                                        Toast.makeText(requireContext(), "Account created successfully", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(
+                                            requireContext(),
+                                            "Account created successfully",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
                                     }
                                 }
                             }
                             .addOnFailureListener {
                                 binding.progressCircular.isVisible = false
                                 binding.btnRegister.isEnabled = true
-                                Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT)
+                                    .show()
                             }
                     }
                 }

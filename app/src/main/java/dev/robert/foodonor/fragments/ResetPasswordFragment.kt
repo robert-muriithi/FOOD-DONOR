@@ -8,9 +8,11 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 import dev.robert.foodonor.databinding.FragmentResetPasswordBinding
 import dev.robert.foodonor.utils.CheckInternet
 
+@AndroidEntryPoint
 class ResetPasswordFragment : DialogFragment() {
     private lateinit var binding: FragmentResetPasswordBinding
     private lateinit var auth: FirebaseAuth
