@@ -78,6 +78,8 @@ class LoginFragment : Fragment() {
                         binding.emailTinputLayout.isEnabled = false
                         binding.passwordInputLayout.isEnabled = false
                         binding.progressCircular.isVisible = true
+                        binding.btnLogin.isEnabled = false
+                        binding.btnLogin.text = "Loading..."
                         auth.signInWithEmailAndPassword(email, password)
                             .addOnCompleteListener(requireActivity()) { task ->
                                 val currentUser = auth.currentUser
@@ -97,6 +99,8 @@ class LoginFragment : Fragment() {
                                                         if (user != null) {
                                                             binding.progressCircular.isVisible =
                                                                 false
+                                                            binding.btnLogin.isEnabled = true
+                                                            binding.btnLogin.text = "Login"
                                                             Toast.makeText(
                                                                 requireContext(),
                                                                 "Login in successful",
@@ -109,6 +113,7 @@ class LoginFragment : Fragment() {
                                                     override fun onCancelled(error: DatabaseError) {
                                                         binding.progressCircular.isVisible = false
                                                         binding.btnLogin.isEnabled = true
+                                                        binding.btnLogin.text = "Login"
                                                         binding.emailTinputLayout.editText?.text?.clear()
                                                         binding.passwordInputLayout.editText?.text?.clear()
                                                         binding.emailTinputLayout.isEnabled = true
@@ -141,6 +146,8 @@ class LoginFragment : Fragment() {
                                     binding.passwordInputLayout.editText?.text?.clear()
                                     binding.emailTinputLayout.isEnabled = true
                                     binding.passwordInputLayout.isEnabled = true
+                                    binding.btnLogin.isEnabled = true
+                                    binding.btnLogin.text = "Login"
                                     Toast.makeText(
                                         activity,
                                         "Error: ${task.exception?.message}",
@@ -153,7 +160,10 @@ class LoginFragment : Fragment() {
                         Toast.makeText(activity, "No internet connection", Toast.LENGTH_SHORT)
                             .show()
                         binding.progressCircular.isVisible = false
+                        binding.btnLogin.isEnabled = true
+                        binding.btnLogin.text = "Login"
                     }
+
                 }
             }
         }

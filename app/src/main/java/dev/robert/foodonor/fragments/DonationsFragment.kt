@@ -38,7 +38,7 @@ class DonationsFragment : Fragment() {
             viewModel.getDonations()
         }
 
-        viewModel.liveData.observe(viewLifecycleOwner) { state ->
+        viewModel.donations.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is Resource.Loading -> {
                     binding.progressCircular.isVisible = true

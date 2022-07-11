@@ -109,6 +109,7 @@ class SignUpFragment : Fragment() {
                                             Toast.LENGTH_SHORT
                                         ).show()
                                     }
+                                    requireActivity().onBackPressed()
                                 }
                             }
                             .addOnFailureListener {

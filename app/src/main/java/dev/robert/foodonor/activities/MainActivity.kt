@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            if (destination.id in listOf(R.id.splashFragment)) {
+            if (destination.id in listOf(R.id.splashFragment, R.id.loginFragment)) {
                 supportActionBar?.hide()
             }
             if (destination.id in listOf(

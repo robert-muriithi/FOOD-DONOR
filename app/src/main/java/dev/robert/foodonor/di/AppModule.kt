@@ -16,12 +16,13 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRepository(database: FirebaseDatabase) : MainRepository{
+    fun provideRepository(database: FirebaseFirestore) : MainRepository{
         return RepositoryImpl(database)
     }
+
     @Provides
     @Singleton
-    fun provideDatabaseInstance(): FirebaseDatabase =
-        FirebaseDatabase.getInstance()
+    fun provideFirestoreInstance(): FirebaseFirestore =
+        FirebaseFirestore.getInstance()
 
 }
