@@ -98,9 +98,22 @@
         android:id="@+id/donationsFragment"
         android:name="dev.robert.foodonor.fragments.DonationsFragment"
         android:label="Donations"
-        tools:layout="@layout/fragment_donations" />
+        tools:layout="@layout/fragment_donations" >
+        <action
+            android:id="@+id/action_donationsFragment_to_donorLocationFragment"
+            app:destination="@id/donorLocationFragment" />
+    </fragment>
     <dialog
         android:id="@+id/resetPasswordFragment"
         android:name="dev.robert.foodonor.fragments.ResetPasswordFragment"
         android:label="ResetPasswordFragment" />
+    <fragment
+        android:id="@+id/donorLocationFragment"
+        android:name="dev.robert.foodonor.fragments.DonorLocationFragment"
+        android:label="fragment_donor_location"
+        tools:layout="@layout/fragment_donor_location" >
+        <argument
+            android:name="location"
+            app:argType="dev.robert.foodonor.model.Donation" />
+    </fragment>
 </navigation>

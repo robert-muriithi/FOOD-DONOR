@@ -1,11 +1,16 @@
 package dev.robert.foodonor.adapter
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import dev.robert.foodonor.R
 import dev.robert.foodonor.databinding.DonationsRowLayoutBinding
+import dev.robert.foodonor.fragments.DonationsFragmentDirections
 import dev.robert.foodonor.model.Donation
 
 class DonationsAdapter : ListAdapter<Donation, DonationsAdapter.DonationsViewHolder>(COMPARATOR) {
@@ -14,6 +19,22 @@ class DonationsAdapter : ListAdapter<Donation, DonationsAdapter.DonationsViewHol
         fun bind(donation: Donation?) {
             binding.donatedFoodItem.text = donation?.foodItem
             binding.donatedFoodItemDescription.text = donation?.description
+            binding.donorPhoneNumber.setOnClickListener {
+                //start phone call
+                val phoneNumber = donation?.phoneNumber
+                val intent = Intent(Intent.ACTION_DIAL)
+                intent.data = Uri.parse("tel:$phoneNumber")
+                binding.root.context.startActivity(intent)
+            }
+
+            binding.donorLocation.setOnClickListener {
+
+                //navigate to maps fragment
+                val action = DonationsFragmentDirections.actionDonationsFragmentToDonorLocationFragment(
+                    donation!!
+                )
+                binding.root.findNavController().navigate(action)
+            }
         }
     }
 
