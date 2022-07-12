@@ -18,10 +18,10 @@ import dev.robert.foodonor.viewmodel.DonationsViewModel
 
 
 @AndroidEntryPoint
-class DonationsFragment  : Fragment() {
+class DonationsFragment : Fragment() {
     private lateinit var binding: FragmentDonationsBinding
     private lateinit var auth: FirebaseAuth
-    private val viewModel : DonationsViewModel by viewModels()
+    private val viewModel: DonationsViewModel by viewModels()
     private val adapter by lazy { DonationsAdapter() }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +38,7 @@ class DonationsFragment  : Fragment() {
             viewModel.getDonations()
         }
 
-        viewModel.liveData.observe(viewLifecycleOwner) { state ->
+        viewModel.donations.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is Resource.Loading -> {
                     binding.progressCircular.isVisible = true

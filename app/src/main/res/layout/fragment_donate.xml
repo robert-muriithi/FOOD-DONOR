@@ -15,15 +15,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
             <androidx.cardview.widget.CardView
-                xmlns:Card_View="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:padding="10dp"
                 app:cardBackgroundColor="@android:color/transparent"
-                Card_View:cardCornerRadius="5dp"
-                Card_View:cardElevation="0dp">
+                app:cardCornerRadius="5dp"
+                app:cardElevation="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -162,11 +161,21 @@
                         android:layout_margin="20dp"
                         android:backgroundTint="@color/orange"
                         android:text="@string/submit"
-                        Card_View:cornerRadius="20dp"
+                        app:cornerRadius="20dp"
                         android:textColor="@color/black"
                         android:textAllCaps="false"
                         android:textSize="20sp"
                         tools:ignore="UnusedAttribute" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_circular"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminateDrawable="@drawable/progress"
+                        android:layout_gravity="center"
+                        android:visibility="gone"/>
+
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

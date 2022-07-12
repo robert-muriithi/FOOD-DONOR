@@ -25,18 +25,19 @@ class SplashFragment : Fragment() {
         binding = FragmentSplashBinding.inflate(inflater, container, false)
         val view = binding.root
         //(activity as AppCompatActivity).supportActionBar?.hide()
-        activity?.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        /*activity?.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN*/
         auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
 
         Handler().postDelayed({
-                if (user != null) {
-                    findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+            if (user != null) {
+                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
 
-                } else {
-                    findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
-                }
-            }, 2000)
+            } else {
+                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+
+            }
+        }, 2000)
 
 
         return view

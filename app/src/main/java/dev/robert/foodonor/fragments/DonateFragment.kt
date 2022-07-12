@@ -2,6 +2,7 @@ package dev.robert.foodonor.fragments
 
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -9,8 +10,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.LocationListener
@@ -25,11 +31,15 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
 import dagger.hilt.android.AndroidEntryPoint
 import dev.robert.foodonor.R
 import dev.robert.foodonor.model.Donation
 import dev.robert.foodonor.databinding.FragmentDonateBinding
+import dev.robert.foodonor.utils.Resource
+import dev.robert.foodonor.viewmodel.DonationsViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -46,11 +56,12 @@ class DonateFragment : Fragment(),
     private val REQUEST_CODE = 1
     private lateinit var mapFragment: SupportMapFragment
     private lateinit var auth: FirebaseAuth
-    private lateinit var database: FirebaseDatabase
-    private lateinit var databaseReference: DatabaseReference
-    private lateinit var reference: DatabaseReference
     private lateinit var userID: String
+    private lateinit var database: FirebaseFirestore
 
+    private val viewModel : DonationsViewModel by viewModels()
+
+    @SuppressLint("RestrictedApi")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,11 +69,13 @@ class DonateFragment : Fragment(),
         // Inflate the layout for this fragment
         binding = FragmentDonateBinding.inflate(inflater, container, false)
         val view = binding.root
+        (activity as AppCompatActivity).supportActionBar?.setDefaultDisplayHomeAsUpEnabled(true)
 
         auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance()
+        database = FirebaseFirestore.getInstance()
         userID = auth.currentUser!!.uid
-        reference = database.getReference("Donations").child(userID)
+
+
         mapFragment = childFragmentManager.findFragmentById(R.id.google_map) as SupportMapFragment
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
@@ -137,6 +150,7 @@ class DonateFragment : Fragment(),
 
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onLocationChanged(location: Location) {
         mLastLocation = location
         val latLng = LatLng(location.latitude, location.longitude)
@@ -174,18 +188,33 @@ class DonateFragment : Fragment(),
                     binding.phoneError.isErrorEnabled = false
                     binding.decriptionError.isErrorEnabled = false
                     // val serverTimestamp = FirebaseDatabase.getInstance().app.options.
-                    val donation =
-                        Donation(userID, donorName, foodItem, phoneNumber, address, geoPoint)
-                    reference.child(donorName).setValue(donation)
-                        .addOnSuccessListener {
-                            Toast.makeText(
-                                requireContext(),
-                                "Donation submitted",
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }.addOnFailureListener {
-                            Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
+                    val donation = Donation(userID, donorName, foodItem, phoneNumber, address, geoPoint)
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        viewModel.donate(donation)
+                    }
+
+                    viewModel.donate.observe(viewLifecycleOwner) {
+                        when(it){
+                            is Resource.Loading ->{
+                                binding.submit.isEnabled = false
+                                binding.submit.text = "Loading..."
+                                binding.progressCircular.isVisible = true
+                            }
+                            is Resource.Success ->{
+                                binding.submit.isEnabled = true
+                                binding.submit.text = "Submit"
+                                binding.progressCircular.isVisible = false
+                                Toast.makeText(requireContext(), "Donation Successful", Toast.LENGTH_LONG).show()
+                                requireActivity().onBackPressed()
+                            }
+                            is Resource.Error -> {
+                                binding.submit.isEnabled = true
+                                binding.submit.text = "Submit"
+                                binding.progressCircular.isVisible = false
+                                Toast.makeText(requireContext(), it.string, Toast.LENGTH_LONG).show()
+                            }
                         }
+                    }
                 }
             }
         }
