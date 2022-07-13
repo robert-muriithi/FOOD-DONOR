@@ -53,7 +53,7 @@ class DonateFragment : Fragment(),
     private lateinit var mGoogleApiClient: GoogleApiClient
     private lateinit var mLastLocation: Location
     private lateinit var mLocationRequest: LocationRequest
-    private val REQUEST_CODE = 1
+    private val REQUEST_CODE = 10
     private lateinit var mapFragment: SupportMapFragment
     private lateinit var auth: FirebaseAuth
     private lateinit var userID: String
@@ -151,9 +151,9 @@ class DonateFragment : Fragment(),
     }
 
     @SuppressLint("SetTextI18n")
-    override fun onLocationChanged(location: Location) {
-        mLastLocation = location
-        val latLng = LatLng(location.latitude, location.longitude)
+    override fun onLocationChanged(p0: Location) {
+        mLastLocation = p0
+        val latLng = LatLng(p0.latitude, p0.longitude)
         val markerOptions = MarkerOptions().position(latLng).title("You are here")
 
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
@@ -182,7 +182,7 @@ class DonateFragment : Fragment(),
                     binding.decriptionError.error = "Please enter your address"
                 }
                 else -> {
-                    val geoPoint = GeoPoint(location.latitude, location.longitude)
+                    val geoPoint = GeoPoint(p0.latitude, p0.longitude)
                     binding.nameError.isErrorEnabled = false
                     binding.itemError.isErrorEnabled = false
                     binding.phoneError.isErrorEnabled = false
