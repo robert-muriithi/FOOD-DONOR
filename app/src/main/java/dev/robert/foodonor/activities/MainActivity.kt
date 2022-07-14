@@ -50,13 +50,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.homeFragment,
-                R.id.donateFragment,
-                R.id.receiveFragment,
-                R.id.foodMapFragment,
-                R.id.donationsFragment,
-                R.id.historyFragment,
-                R.id.aboutUsFragment,
+                R.id.homeFragment
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
