@@ -29,6 +29,12 @@
         <action
             android:id="@+id/action_homeFragment_to_foodMapFragment"
             app:destination="@id/foodMapFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_aboutUsFragment2"
+            app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_contactUsFragment"
+            app:destination="@id/contactUsFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -119,4 +125,8 @@
             android:name="location"
             app:argType="dev.robert.foodonor.model.Donation" />
     </fragment>
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="dev.robert.foodonor.fragments.ContactUsFragment"
+        android:label="ContactUsFragment" />
 </navigation>

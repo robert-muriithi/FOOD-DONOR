@@ -20,6 +20,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -137,7 +138,8 @@ class DonorLocationFragment : Fragment(), OnMapReadyCallback,
                 it1
             )
         } }
-        val markerOptions2 = latLng2?.let { MarkerOptions().position(it).title("Donor") }
+        val markerOptions2 = latLng2?.let { MarkerOptions().position(it).title("Donor") .icon(
+            BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)) }
         latLng2?.let { CameraUpdateFactory.newLatLngZoom(it, 15f) }?.let { mMap.animateCamera(it) }
         markerOptions2?.let { mMap.addMarker(it) }!!.showInfoWindow()
 
