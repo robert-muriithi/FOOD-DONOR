@@ -37,6 +37,9 @@ class HomeFragment : Fragment() {
         binding.cardMyPin.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_donationsFragment)
         }
+        binding.cardFoodmap.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_foodMapFragment)
+        }
 
         return view
     }
