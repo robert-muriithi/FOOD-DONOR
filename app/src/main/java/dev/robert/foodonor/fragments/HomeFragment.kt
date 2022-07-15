@@ -23,8 +23,6 @@ class HomeFragment : Fragment() {
         val view = binding.root
         (activity as AppCompatActivity).supportActionBar?.show()
 
-        //(activity as AppCompatActivity).setSupportActionBar(binding)
-
         binding.cardLogout.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
         }
@@ -39,6 +37,12 @@ class HomeFragment : Fragment() {
         }
         binding.cardFoodmap.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_foodMapFragment)
+        }
+        binding.cardAboutus.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_aboutUsFragment)
+        }
+        binding.cardContact.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_contactUsFragment)
         }
 
         return view

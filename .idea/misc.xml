@@ -30,6 +30,8 @@
         <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/custom_dialog.xml" value="0.2" />
         <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/donations_row_layout.xml" value="0.25" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/fragment_about_us.xml" value="0.2" />
+        <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/fragment_contact_us.xml" value="0.33" />
         <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/fragment_donate.xml" value="0.25" />
         <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/fragment_donations.xml" value="0.33" />
         <entry key="..\:/Users/murii/FOODONOR/app/src/main/res/layout/fragment_donor_location.xml" value="0.2" />
