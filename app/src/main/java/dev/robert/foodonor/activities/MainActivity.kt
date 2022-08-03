@@ -1,14 +1,14 @@
 package dev.robert.foodonor.activities
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -22,7 +22,9 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import dagger.hilt.android.AndroidEntryPoint
 import dev.robert.foodonor.R
+
 import dev.robert.foodonor.databinding.ActivityMainBinding
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -87,11 +89,45 @@ class MainActivity : AppCompatActivity() {
         val userEmailText = header.findViewById<android.widget.TextView>(R.id.useremail)
         userEmailText.text = userEmail
 
+        binding.navigationView.setNavigationItemSelectedListener { item ->
+            when(item.itemId){
+                R.id.action_help -> {
+                    startActivity(Intent(this, HelpActivity::class.java))
+                    true
+                }
+                R.id.action_home -> {
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    true
+                }
+                R.id.nav_share -> {
+                    val intent = Intent(Intent.ACTION_SEND)
+                    intent.type = "text/plain"
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "FOODONOR")
+                    intent.putExtra(Intent.EXTRA_TEXT, "")
+                    startActivity(Intent.createChooser(intent, "Share via"))
+                    true
+                }
+                R.id.action_feedback ->{
+                    val intent = Intent(Intent.ACTION_SENDTO)
+                    intent.data = Uri.parse("mailto:" + "leencelidoros@gmail.com" ) // only email apps should handle this
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback")
+                    if (intent.resolveActivity(this.packageManager) != null) {
+                        startActivity(intent)
+                    }
+                    true
+                }
+                else -> {
+                    false
+                }
+            }
+        }
+
     }
 
     override fun onResume() {
         super.onResume()
         setSupportActionBar(binding.toolbar)
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
     }
 
     override fun onSupportNavigateUp(): Boolean {

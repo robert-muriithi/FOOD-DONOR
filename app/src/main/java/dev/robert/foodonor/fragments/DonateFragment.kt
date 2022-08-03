@@ -69,6 +69,7 @@ class DonateFragment : Fragment(),
         // Inflate the layout for this fragment
         binding = FragmentDonateBinding.inflate(inflater, container, false)
         val view = binding.root
+
         (activity as AppCompatActivity).supportActionBar?.setDefaultDisplayHomeAsUpEnabled(true)
 
         auth = FirebaseAuth.getInstance()
