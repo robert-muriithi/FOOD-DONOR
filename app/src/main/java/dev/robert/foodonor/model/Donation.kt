@@ -12,5 +12,6 @@ data class Donation(
     var foodItem: String? = "",
     var phoneNumber: String? = "",
     var description: String? = "",
-    var location: @RawValue GeoPoint? = null
+    var location: @RawValue GeoPoint? = null,
+    var isReceived : Boolean? = false
 ) : Parcelable

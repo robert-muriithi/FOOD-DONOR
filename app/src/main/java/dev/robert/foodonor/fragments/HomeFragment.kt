@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import dev.robert.foodonor.R
 import dev.robert.foodonor.databinding.FragmentHomeBinding
@@ -14,6 +15,7 @@ import dev.robert.foodonor.databinding.FragmentHomeBinding
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var auth : FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,8 +24,10 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
         (activity as AppCompatActivity).supportActionBar?.show()
+        auth = FirebaseAuth.getInstance()
 
         binding.cardLogout.setOnClickListener {
+            auth.signOut()
             findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
         }
         binding.cardDonate.setOnClickListener {
