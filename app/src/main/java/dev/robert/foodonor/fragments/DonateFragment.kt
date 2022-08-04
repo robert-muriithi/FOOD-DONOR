@@ -69,6 +69,7 @@ class DonateFragment : Fragment(),
         // Inflate the layout for this fragment
         binding = FragmentDonateBinding.inflate(inflater, container, false)
         val view = binding.root
+
         (activity as AppCompatActivity).supportActionBar?.setDefaultDisplayHomeAsUpEnabled(true)
 
         auth = FirebaseAuth.getInstance()
@@ -188,7 +189,7 @@ class DonateFragment : Fragment(),
                     binding.phoneError.isErrorEnabled = false
                     binding.decriptionError.isErrorEnabled = false
                     // val serverTimestamp = FirebaseDatabase.getInstance().app.options.
-                    val donation = Donation(userID, donorName, foodItem, phoneNumber, address, geoPoint)
+                    val donation = Donation(userID, donorName, foodItem, phoneNumber, address, geoPoint, false)
                     viewLifecycleOwner.lifecycleScope.launch {
                         viewModel.donate(donation)
                     }

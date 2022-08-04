@@ -19,6 +19,7 @@
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/loginFragment"
+            app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_homeFragment_to_aboutUsFragment"
@@ -71,7 +72,11 @@
         android:id="@+id/receiveFragment"
         android:name="dev.robert.foodonor.fragments.ReceiveFragment"
         android:label="Receive"
-        tools:layout="@layout/fragment_receive" />
+        tools:layout="@layout/fragment_receive" >
+        <action
+            android:id="@+id/action_receiveFragment_to_donorLocationFragment"
+            app:destination="@id/donorLocationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"
         android:name="dev.robert.foodonor.fragments.AboutUsFragment"

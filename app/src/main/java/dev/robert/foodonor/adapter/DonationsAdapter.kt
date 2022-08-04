@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.robert.foodonor.R
 import dev.robert.foodonor.databinding.DonationsRowLayoutBinding
 import dev.robert.foodonor.fragments.DonationsFragmentDirections
+import dev.robert.foodonor.fragments.ReceiveFragmentDirections
 import dev.robert.foodonor.model.Donation
 
-class DonationsAdapter : ListAdapter<Donation, DonationsAdapter.DonationsViewHolder>(COMPARATOR) {
+class DonationsAdapter  : ListAdapter<Donation, DonationsAdapter.DonationsViewHolder>(COMPARATOR) {
     class DonationsViewHolder(private var binding: DonationsRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(donation: Donation?) {
