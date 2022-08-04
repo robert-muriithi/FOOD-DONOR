@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class ReceiveFragment : Fragment() {
     private lateinit var binding: FragmentReceiveBinding
-    private val adapter : ReceiveAdapter by lazy { ReceiveAdapter() }
+    private val adapter : ReceiveAdapter by lazy { ReceiveAdapter(viewModel) }
     private val viewModel: DonationsViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
