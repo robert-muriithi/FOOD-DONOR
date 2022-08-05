@@ -1,5 +1,6 @@
 package dev.robert.foodonor.repository
 
+import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -14,7 +15,7 @@ import javax.inject.Inject
 class RepositoryImpl @Inject constructor(
     private val database: FirebaseFirestore
 ) : MainRepository {
-
+    private  val TAG = "RepositoryImpl"
     override suspend fun getDonations(result: (Resource<List<Donation>>) -> Unit) {
 
         database.collection("Donations")
@@ -53,4 +54,7 @@ class RepositoryImpl @Inject constructor(
                 )
             }
     }
+
+
+
 }
