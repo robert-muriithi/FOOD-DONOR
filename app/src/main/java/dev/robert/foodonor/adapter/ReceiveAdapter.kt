@@ -2,12 +2,9 @@ package dev.robert.foodonor.adapter
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.net.Uri
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
@@ -17,24 +14,9 @@ import dev.robert.foodonor.R
 import dev.robert.foodonor.databinding.ReceiveRowLayoutBinding
 import dev.robert.foodonor.fragments.ReceiveFragmentDirections
 import dev.robert.foodonor.model.Donation
-import dev.robert.foodonor.viewmodel.DonationsViewModel
-import javax.inject.Inject
 
 
-class ReceiveAdapter @Inject constructor(
-    private val viewModel: DonationsViewModel
-    ) : ListAdapter<Donation, ReceiveAdapter.ReceiveViewHolder>(ReceiveDiffUtil) {
-    //private var context : Context = null
-    object ReceiveDiffUtil : DiffUtil.ItemCallback<Donation>() {
-        override fun areItemsTheSame(oldItem: Donation, newItem: Donation): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(oldItem: Donation, newItem: Donation): Boolean {
-            return oldItem == newItem
-        }
-    }
-
+class ReceiveAdapter  : ListAdapter<Donation, ReceiveAdapter.ReceiveViewHolder>(ReceiveDiffUtil) {
     class ReceiveViewHolder(private val binding: ReceiveRowLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(donation: Donation?){
@@ -69,8 +51,13 @@ class ReceiveAdapter @Inject constructor(
                         binding.receiveCheckBox.isChecked = true
                         binding.receiveCheckBox.isEnabled = false
                         binding.receiveCheckBox.text = "Received"
-                        binding.receiveCheckBox.isChecked = donation?.isReceived!! == true
-                        val donation = Donation(donation.id, donation.name, donation.foodItem,donation.phoneNumber,donation.description, donation.location, true)
+                        val donations = ArrayList<Donation>()
+                        val donation = Donation(donation?.id, donation?.name, donation?.foodItem,donation?.phoneNumber,donation?.description, donation?.location, true)
+                        if (donation.isReceived == true){
+                            donations.add(donation)
+                            binding.receiveCheckBox.isEnabled = false
+                            binding.receiveCheckBox.isChecked = true
+                        }
                     }
                     .setNegativeButton("No"){ _, i ->
                         binding.receiveCheckBox.isChecked = false
@@ -94,5 +81,15 @@ class ReceiveAdapter @Inject constructor(
     override fun onBindViewHolder(holder: ReceiveViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
+    }
+
+    object ReceiveDiffUtil : DiffUtil.ItemCallback<Donation>() {
+        override fun areItemsTheSame(oldItem: Donation, newItem: Donation): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Donation, newItem: Donation): Boolean {
+            return oldItem == newItem
+        }
     }
 }
