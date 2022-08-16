@@ -31,21 +31,6 @@ class ReceiveFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             viewModel.getDonations()
-            viewModel.listenToChanges()
-        }
-        viewModel.listener.observe(viewLifecycleOwner){
-            when(it){
-                is Resource.Success -> {
-                    Toast.makeText(requireContext(), "Data updated successfully", Toast.LENGTH_SHORT).show()
-                    adapter.submitList(it.data)
-                }
-                is Resource.Error -> {
-                    Toast.makeText(requireContext(), it.string, Toast.LENGTH_SHORT).show()
-                }
-                is Resource.Loading -> {
-
-                }
-            }
         }
 
         viewModel.donations.observe(viewLifecycleOwner){ state ->
@@ -63,8 +48,6 @@ class ReceiveFragment : Fragment() {
                 }
             }
         }
-
-
 
         return view
     }

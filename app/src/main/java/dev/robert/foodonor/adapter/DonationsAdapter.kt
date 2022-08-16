@@ -1,9 +1,12 @@
 package dev.robert.foodonor.adapter
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.CheckBox
+import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -52,8 +55,15 @@ class DonationsAdapter  : ListAdapter<Donation, DonationsAdapter.DonationsViewHo
         )
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: DonationsViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val item = getItem(position)
+        if (item.received == true){
+            val tv = holder.itemView.findViewById<TextView>(R.id.receiveTextView)
+            tv.text = "Received"
+        }
+        holder.bind(item)
+
 
     }
 

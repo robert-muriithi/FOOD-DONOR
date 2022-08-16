@@ -40,6 +40,7 @@ import dev.robert.foodonor.databinding.FragmentDonateBinding
 import dev.robert.foodonor.utils.Resource
 import dev.robert.foodonor.viewmodel.DonationsViewModel
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -165,6 +166,7 @@ class DonateFragment : Fragment(),
             val foodItem = binding.itemError.editText?.text.toString()
             val phoneNumber = binding.phoneError.editText?.text.toString()
             val address = binding.decriptionError.editText?.text.toString()
+            val donationUniqueId = UUID.randomUUID().toString()
             when {
                 donorName.isEmpty() -> {
                     binding.nameError.isErrorEnabled = true
@@ -189,7 +191,7 @@ class DonateFragment : Fragment(),
                     binding.phoneError.isErrorEnabled = false
                     binding.decriptionError.isErrorEnabled = false
                     // val serverTimestamp = FirebaseDatabase.getInstance().app.options.
-                    val donation = Donation(userID, donorName, foodItem, phoneNumber, address, geoPoint, false)
+                    val donation = Donation(userID, donorName, foodItem, phoneNumber, address, geoPoint, false, donationUniqueId )
                     viewLifecycleOwner.lifecycleScope.launch {
                         viewModel.donate(donation)
                     }

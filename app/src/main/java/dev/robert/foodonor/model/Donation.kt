@@ -13,5 +13,6 @@ data class Donation(
     var phoneNumber: String? = "",
     var description: String? = "",
     var location: @RawValue GeoPoint? = null,
-    var isReceived : Boolean? = false
+    var received : Boolean? = false,
+    var donorId : String? = ""
 ) : Parcelable

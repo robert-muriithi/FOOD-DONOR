@@ -38,7 +38,7 @@ class DonationsViewModel @Inject constructor(
         }
     }
 
-    private val _listener = MutableLiveData<Resource<List<Donation>>>()
+    /*private val _listener = MutableLiveData<Resource<List<Donation>>>()
     val listener : LiveData<Resource<List<Donation>>> = _listener
 
      fun listenToChanges(){
@@ -59,5 +59,5 @@ class DonationsViewModel @Inject constructor(
                 _listener.value = Resource.Success(donations)
             }
         }
-    }
+    }*/
 }
