@@ -38,6 +38,16 @@ class DonationsViewModel @Inject constructor(
         }
     }
 
+    private val _history = MutableLiveData<Resource<List<Donation>>>()
+    val history : LiveData<Resource<List<Donation>>> = _history
+
+    suspend fun getHistory() {
+        _history.value = Resource.Loading
+            repository.fetchHistory { history ->
+            _history.value = history
+        }
+    }
+
     /*private val _listener = MutableLiveData<Resource<List<Donation>>>()
     val listener : LiveData<Resource<List<Donation>>> = _listener
 

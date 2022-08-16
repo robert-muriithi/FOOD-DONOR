@@ -48,6 +48,9 @@ class HomeFragment : Fragment() {
         binding.cardContact.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_contactUsFragment)
         }
+        binding.cardHistory.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_historyFragment)
+        }
 
         return view
     }
