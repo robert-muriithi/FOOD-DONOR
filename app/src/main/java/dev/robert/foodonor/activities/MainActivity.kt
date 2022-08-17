@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         userEmailText.text = userEmail
 
         binding.navigationView.setNavigationItemSelectedListener { item ->
-            when(item.itemId){
+            when (item.itemId) {
                 R.id.action_help -> {
                     startActivity(Intent(this, HelpActivity::class.java))
                     true
@@ -107,9 +107,10 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent.createChooser(intent, "Share via"))
                     true
                 }
-                R.id.action_feedback ->{
+                R.id.action_feedback -> {
                     val intent = Intent(Intent.ACTION_SENDTO)
-                    intent.data = Uri.parse("mailto:" + "leencelidoros@gmail.com" ) // only email apps should handle this
+                    intent.data =
+                        Uri.parse("mailto:" + "leencelidoros@gmail.com") // only email apps should handle this
                     intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback")
                     if (intent.resolveActivity(this.packageManager) != null) {
                         startActivity(intent)

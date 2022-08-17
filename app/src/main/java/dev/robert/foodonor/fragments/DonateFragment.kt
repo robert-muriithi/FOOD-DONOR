@@ -15,7 +15,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
@@ -29,19 +28,16 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
 import dagger.hilt.android.AndroidEntryPoint
 import dev.robert.foodonor.R
-import dev.robert.foodonor.model.Donation
 import dev.robert.foodonor.databinding.FragmentDonateBinding
+import dev.robert.foodonor.model.Donation
 import dev.robert.foodonor.utils.Resource
 import dev.robert.foodonor.viewmodel.DonationsViewModel
 import kotlinx.coroutines.launch
 import java.util.*
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class DonateFragment : Fragment(),
@@ -60,7 +56,7 @@ class DonateFragment : Fragment(),
     private lateinit var userID: String
     private lateinit var database: FirebaseFirestore
 
-    private val viewModel : DonationsViewModel by viewModels()
+    private val viewModel: DonationsViewModel by viewModels()
 
     @SuppressLint("RestrictedApi")
     override fun onCreateView(
@@ -191,30 +187,44 @@ class DonateFragment : Fragment(),
                     binding.phoneError.isErrorEnabled = false
                     binding.decriptionError.isErrorEnabled = false
                     // val serverTimestamp = FirebaseDatabase.getInstance().app.options.
-                    val donation = Donation(userID, donorName, foodItem, phoneNumber, address, geoPoint, false, donationUniqueId )
+                    val donation = Donation(
+                        userID,
+                        donorName,
+                        foodItem,
+                        phoneNumber,
+                        address,
+                        geoPoint,
+                        false,
+                        donationUniqueId
+                    )
                     viewLifecycleOwner.lifecycleScope.launch {
                         viewModel.donate(donation)
                     }
 
                     viewModel.donate.observe(viewLifecycleOwner) {
-                        when(it){
-                            is Resource.Loading ->{
+                        when (it) {
+                            is Resource.Loading -> {
                                 binding.submit.isEnabled = false
                                 binding.submit.text = "Loading..."
                                 binding.progressCircular.isVisible = true
                             }
-                            is Resource.Success ->{
+                            is Resource.Success -> {
                                 binding.submit.isEnabled = true
                                 binding.submit.text = "Submit"
                                 binding.progressCircular.isVisible = false
-                                Toast.makeText(requireContext(), "Donation Successful", Toast.LENGTH_LONG).show()
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Donation Successful",
+                                    Toast.LENGTH_LONG
+                                ).show()
                                 requireActivity().onBackPressed()
                             }
                             is Resource.Error -> {
                                 binding.submit.isEnabled = true
                                 binding.submit.text = "Submit"
                                 binding.progressCircular.isVisible = false
-                                Toast.makeText(requireContext(), it.string, Toast.LENGTH_LONG).show()
+                                Toast.makeText(requireContext(), it.string, Toast.LENGTH_LONG)
+                                    .show()
                             }
                         }
                     }

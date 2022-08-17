@@ -1,17 +1,8 @@
 package dev.robert.foodonor.repository
 
 import android.app.Application
-import android.content.Context
-import android.provider.SyncStateContract.Helpers.update
-import android.util.Log
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.SetOptions
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.robert.foodonor.model.Donation
 import dev.robert.foodonor.utils.Resource
@@ -21,7 +12,7 @@ class RepositoryImpl @Inject constructor(
     private val database: FirebaseFirestore,
     @ApplicationContext application: Application
 ) : MainRepository {
-    private  val TAG = "RepositoryImpl"
+    private val TAG = "RepositoryImpl"
 
 
     override suspend fun getDonations(result: (Resource<List<Donation>>) -> Unit) {

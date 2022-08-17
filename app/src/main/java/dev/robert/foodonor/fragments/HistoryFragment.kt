@@ -1,18 +1,15 @@
 package dev.robert.foodonor.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
-import dev.robert.foodonor.R
-import dev.robert.foodonor.adapter.DonationsAdapter
 import dev.robert.foodonor.adapter.HistoryAdapter
-import dev.robert.foodonor.adapter.ReceiveAdapter
 import dev.robert.foodonor.databinding.FragmentHistoryBinding
 import dev.robert.foodonor.utils.Resource
 import dev.robert.foodonor.viewmodel.DonationsViewModel
@@ -35,7 +32,7 @@ class HistoryFragment : Fragment() {
 
         }
         viewModel.history.observe(viewLifecycleOwner) {
-            when(it){
+            when (it) {
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
                     adapter.submitList(it.data)
