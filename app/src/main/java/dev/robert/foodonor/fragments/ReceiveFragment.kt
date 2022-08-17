@@ -18,7 +18,7 @@ import dev.robert.foodonor.viewmodel.DonationsViewModel
 @AndroidEntryPoint
 class ReceiveFragment : Fragment() {
     private lateinit var binding: FragmentReceiveBinding
-    private val adapter : ReceiveAdapter by lazy { ReceiveAdapter() }
+    private val adapter: ReceiveAdapter by lazy { ReceiveAdapter() }
     private val viewModel: DonationsViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +33,7 @@ class ReceiveFragment : Fragment() {
             viewModel.getDonations()
         }
 
-        viewModel.donations.observe(viewLifecycleOwner){ state ->
+        viewModel.donations.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is Resource.Loading -> {
                     binding.progressBar.isVisible = true

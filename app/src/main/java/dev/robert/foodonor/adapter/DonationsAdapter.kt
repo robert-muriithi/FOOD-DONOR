@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
@@ -16,10 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.robert.foodonor.R
 import dev.robert.foodonor.databinding.DonationsRowLayoutBinding
 import dev.robert.foodonor.fragments.DonationsFragmentDirections
-import dev.robert.foodonor.fragments.ReceiveFragmentDirections
 import dev.robert.foodonor.model.Donation
 
-class DonationsAdapter  : ListAdapter<Donation, DonationsAdapter.DonationsViewHolder>(COMPARATOR) {
+class DonationsAdapter : ListAdapter<Donation, DonationsAdapter.DonationsViewHolder>(COMPARATOR) {
     class DonationsViewHolder(private var binding: DonationsRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(donation: Donation?) {
@@ -36,9 +34,10 @@ class DonationsAdapter  : ListAdapter<Donation, DonationsAdapter.DonationsViewHo
             binding.donorLocation.setOnClickListener {
 
                 //navigate to maps fragment
-                val action = DonationsFragmentDirections.actionDonationsFragmentToDonorLocationFragment(
-                    donation!!
-                )
+                val action =
+                    DonationsFragmentDirections.actionDonationsFragmentToDonorLocationFragment(
+                        donation!!
+                    )
                 binding.root.findNavController().navigate(action)
             }
         }
@@ -60,7 +59,7 @@ class DonationsAdapter  : ListAdapter<Donation, DonationsAdapter.DonationsViewHo
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: DonationsViewHolder, position: Int) {
         val item = getItem(position)
-        if (item.received == true){
+        if (item.received == true) {
             val tv = holder.itemView.findViewById<TextView>(R.id.receiveTextView)
             tv.text = "Received"
             val phoneIcon = holder.itemView.findViewById<ImageView>(R.id.donorPhoneNumber)

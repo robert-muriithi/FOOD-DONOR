@@ -18,13 +18,11 @@ import dev.robert.foodonor.databinding.ReceiveRowLayoutBinding
 import dev.robert.foodonor.fragments.ReceiveFragmentDirections
 import dev.robert.foodonor.model.Donation
 import dev.robert.foodonor.repository.MainRepository
-import dev.robert.foodonor.utils.Resource
-import kotlinx.coroutines.*
-import kotlinx.coroutines.selects.whileSelect
 import javax.inject.Inject
 
 
-class ReceiveAdapter   : ListAdapter<Donation, ReceiveAdapter.ReceiveViewHolder>(ReceiveViewHolder.ReceiveDiffUtil) {
+class ReceiveAdapter :
+    ListAdapter<Donation, ReceiveAdapter.ReceiveViewHolder>(ReceiveViewHolder.ReceiveDiffUtil) {
     class ReceiveViewHolder(private val binding: ReceiveRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         object ReceiveDiffUtil : DiffUtil.ItemCallback<Donation>() {
@@ -128,8 +126,8 @@ class ReceiveAdapter   : ListAdapter<Donation, ReceiveAdapter.ReceiveViewHolder>
     override fun onBindViewHolder(holder: ReceiveViewHolder, position: Int) {
         val item = getItem(position)
         //Set the checkbox to true if the donation is received
-        if (item.received == true){
-           val cb = holder.itemView.findViewById<CheckBox>(R.id.receiveCheckBox)
+        if (item.received == true) {
+            val cb = holder.itemView.findViewById<CheckBox>(R.id.receiveCheckBox)
             cb.isChecked = true
             cb.isEnabled = false
             cb.text = "Received"

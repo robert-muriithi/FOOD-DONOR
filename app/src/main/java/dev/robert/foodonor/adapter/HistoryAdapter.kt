@@ -34,9 +34,10 @@ class HistoryAdapter : ListAdapter<Donation, HistoryAdapter.DonationsViewHolder>
             binding.donorLocation.setOnClickListener {
 
                 //navigate to maps fragment
-                val action = DonationsFragmentDirections.actionDonationsFragmentToDonorLocationFragment(
-                    donation!!
-                )
+                val action =
+                    DonationsFragmentDirections.actionDonationsFragmentToDonorLocationFragment(
+                        donation!!
+                    )
                 binding.root.findNavController().navigate(action)
             }
         }
@@ -63,11 +64,10 @@ class HistoryAdapter : ListAdapter<Donation, HistoryAdapter.DonationsViewHolder>
         phoneIcon.isVisible = false
         locIcon.isVisible = false
 
-        if (item.received == true){
+        if (item.received == true) {
             val tv = holder.itemView.findViewById<TextView>(R.id.receiveTextView)
             tv.text = "Received"
-        }
-        else{
+        } else {
             val tv = holder.itemView.findViewById<TextView>(R.id.receiveTextView)
             tv.text = "Donated"
         }

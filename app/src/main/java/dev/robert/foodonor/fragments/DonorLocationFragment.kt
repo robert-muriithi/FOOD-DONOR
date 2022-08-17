@@ -27,13 +27,14 @@ import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import dev.robert.foodonor.R
 import dev.robert.foodonor.databinding.FragmentDonorLocationBinding
+
 @AndroidEntryPoint
 class DonorLocationFragment : Fragment(), OnMapReadyCallback,
     GoogleApiClient.ConnectionCallbacks,
     GoogleApiClient.OnConnectionFailedListener,
     LocationListener {
-    private lateinit var binding : FragmentDonorLocationBinding
-    private val args : DonorLocationFragmentArgs by navArgs()
+    private lateinit var binding: FragmentDonorLocationBinding
+    private val args: DonorLocationFragmentArgs by navArgs()
     private val REQUEST_CODE = 1
     private lateinit var mMap: GoogleMap
     private lateinit var mGoogleApiClient: GoogleApiClient
@@ -47,12 +48,13 @@ class DonorLocationFragment : Fragment(), OnMapReadyCallback,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentDonorLocationBinding.inflate(inflater,container,false)
+        binding = FragmentDonorLocationBinding.inflate(inflater, container, false)
         val view = binding.root
         auth = FirebaseAuth.getInstance()
         userID = auth.currentUser!!.uid
 
-        val mapFragment = childFragmentManager.findFragmentById(R.id.google_map) as? SupportMapFragment
+        val mapFragment =
+            childFragmentManager.findFragmentById(R.id.google_map) as? SupportMapFragment
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -69,6 +71,7 @@ class DonorLocationFragment : Fragment(), OnMapReadyCallback,
 
         return view
     }
+
     @Synchronized
     protected fun buildGoogleApiClient() {
         mGoogleApiClient = GoogleApiClient.Builder(requireContext())
@@ -133,13 +136,19 @@ class DonorLocationFragment : Fragment(), OnMapReadyCallback,
 
         val location = args.location
 
-        val  latLng2 = location.location?.let { location.location?.longitude?.let { it1 ->
-            LatLng(it.latitude,
-                it1
+        val latLng2 = location.location?.let {
+            location.location?.longitude?.let { it1 ->
+                LatLng(
+                    it.latitude,
+                    it1
+                )
+            }
+        }
+        val markerOptions2 = latLng2?.let {
+            MarkerOptions().position(it).title("Donor").icon(
+                BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)
             )
-        } }
-        val markerOptions2 = latLng2?.let { MarkerOptions().position(it).title("Donor") .icon(
-            BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)) }
+        }
         latLng2?.let { CameraUpdateFactory.newLatLngZoom(it, 15f) }?.let { mMap.animateCamera(it) }
         markerOptions2?.let { mMap.addMarker(it) }!!.showInfoWindow()
 
