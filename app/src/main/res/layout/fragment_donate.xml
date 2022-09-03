@@ -48,7 +48,7 @@
                             android:layout_marginTop="10dp"
                             android:textSize="20sp"
                             android:inputType="text"
-                            android:hint="Donor name"
+                            android:hint="Username (Don't use real name. For identification only)"
                             android:textColor="@color/black"
                             android:textColorHint="@color/black"
                             android:backgroundTint="@android:color/transparent"
