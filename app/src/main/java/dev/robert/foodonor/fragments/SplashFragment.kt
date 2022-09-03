@@ -30,10 +30,14 @@ class SplashFragment : Fragment() {
 
         Handler().postDelayed({
             if (user != null) {
-                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+                val action = SplashFragmentDirections.actionSplashFragmentToHomeFragment()
+                findNavController().navigate(action)
+                //findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
 
             } else {
-                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+                val action = SplashFragmentDirections.actionSplashFragmentToLoginFragment()
+                findNavController().navigate(action)
+                //findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
 
             }
         }, 2000)
