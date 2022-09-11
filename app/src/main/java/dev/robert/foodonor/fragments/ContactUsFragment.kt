@@ -43,25 +43,10 @@ class ContactUsFragment : Fragment() {
                    binding.decriptionError.isErrorEnabled = true
                    return@setOnClickListener
                }
-               /*!Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
-                   binding.emailError.error = "Invalid email format"
-                   binding.emailError.isErrorEnabled = true
-                   return@setOnClickListener
-               }*/
                else -> {
                        binding.nameError.isErrorEnabled = false
                        binding.emailError.isErrorEnabled = false
                        binding.decriptionError.isErrorEnabled = false
-                       /*val intent = Intent(Intent.ACTION_SEND)
-                        Uri.parse("mailto:")
-                       intent.type = "message/html"
-                       val address = "leencelidonde@gmail.com"
-                        intent.putExtra(Intent.EXTRA_EMAIL, address)
-                       intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback from Foodonor")
-                       intent.putExtra(Intent.EXTRA_TEXT, "Hi, I am $name \n Message: \n $description")
-                       startActivity(intent)*/
-
-
                    val emailIntent = Intent(
                        Intent.ACTION_SEND
                    )
