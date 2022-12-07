@@ -1,33 +1,62 @@
 {
   "project_info": {
-    "project_number": "453597561070",
-    "project_id": "foodonor-f27d9",
-    "storage_bucket": "foodonor-f27d9.appspot.com"
+    "project_number": "753531093587",
+    "project_id": "foodonus-39b6a",
+    "storage_bucket": "foodonus-39b6a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:453597561070:android:f774d63ee9c1c18bdb33ff",
+        "mobilesdk_app_id": "1:753531093587:android:2b3eeee9e1c008f537bca6",
         "android_client_info": {
           "package_name": "dev.robert.foodonor"
         }
       },
       "oauth_client": [
         {
-          "client_id": "453597561070-skglg1p16294fb1jknl8kh5i34bembrn.apps.googleusercontent.com",
+          "client_id": "753531093587-t7s8qoh8k8rmghkbvs9bgs3vnpt2s3e7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCUtZQamwKp53YhIbSs_Vh6TIrDox3Cda4"
+          "current_key": "AIzaSyA35v31n29j9uo2QOhJJdk2ZNaSYKESgJE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "453597561070-skglg1p16294fb1jknl8kh5i34bembrn.apps.googleusercontent.com",
+              "client_id": "753531093587-t7s8qoh8k8rmghkbvs9bgs3vnpt2s3e7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:753531093587:android:781d0877b7f8dc3537bca6",
+        "android_client_info": {
+          "package_name": "edu.puo.foodonus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "753531093587-t7s8qoh8k8rmghkbvs9bgs3vnpt2s3e7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA35v31n29j9uo2QOhJJdk2ZNaSYKESgJE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "753531093587-t7s8qoh8k8rmghkbvs9bgs3vnpt2s3e7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

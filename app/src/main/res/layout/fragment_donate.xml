@@ -10,6 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:title="Home"
+                app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+                app:titleTextColor="@color/white"
+                android:id="@+id/toolbar"/>
+        </com.google.android.material.appbar.AppBarLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

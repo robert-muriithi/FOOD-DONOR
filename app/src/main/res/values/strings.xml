@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">FOODONOR</string>
+    <string name="app_name">FOODONUS</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="welcome_to_foodonor">Welcome to FOODONOR</string>
+    <string name="welcome_to_foodonor">Welcome to FoodOnUs</string>
     <string name="login">Login</string>
     <string name="sign_up">Sign Up</string>
     <string name="email_address">Email Address</string>
@@ -34,4 +34,7 @@
     <string name="forexample_gmail_com">forexample@gmail.com</string>
     <string name="reset">Reset</string>
     <string name="home">Home</string>
+    <string name="resturant_donor">Resturant</string>
+    <string name="organization_receiver">Organization</string>
+    <string name="admin">Admin</string>
 </resources>

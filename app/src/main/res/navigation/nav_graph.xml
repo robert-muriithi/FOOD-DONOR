@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="dev.robert.foodonor.fragments.HomeFragment"
+        android:name="edu.puo.foodonus.fragments.home.HomeFragment"
         android:label="Dashboard"
         tools:layout="@layout/fragment_home" >
         <action
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="dev.robert.foodonor.fragments.LoginFragment"
+        android:name="edu.puo.foodonus.fragments.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -56,10 +56,16 @@
         <action
             android:id="@+id/action_loginFragment_to_resetPasswordFragment"
             app:destination="@id/resetPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_donorsHomeFragment"
+            app:destination="@id/donorsHomeFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="dev.robert.foodonor.fragments.SignUpFragment"
+        android:name="edu.puo.foodonus.fragments.auth.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -68,12 +74,12 @@
     </fragment>
     <fragment
         android:id="@+id/donateFragment"
-        android:name="dev.robert.foodonor.fragments.DonateFragment"
+        android:name="edu.puo.foodonus.fragments.donate.DonateFragment"
         android:label="Donate"
         tools:layout="@layout/fragment_donate" />
     <fragment
         android:id="@+id/receiveFragment"
-        android:name="dev.robert.foodonor.fragments.ReceiveFragment"
+        android:name="edu.puo.foodonus.fragments.receive.ReceiveFragment"
         android:label="Receive"
         tools:layout="@layout/fragment_receive" >
         <action
@@ -82,22 +88,22 @@
     </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"
-        android:name="dev.robert.foodonor.fragments.AboutUsFragment"
+        android:name="edu.puo.foodonus.fragments.about.AboutUsFragment"
         android:label="About us"
         tools:layout="@layout/fragment_about_us" />
     <fragment
         android:id="@+id/foodMapFragment"
-        android:name="dev.robert.foodonor.fragments.FoodMapFragment"
+        android:name="edu.puo.foodonus.fragments.foodmap.FoodMapFragment"
         android:label="Food map"
         tools:layout="@layout/fragment_food_map" />
     <fragment
         android:id="@+id/historyFragment"
-        android:name="dev.robert.foodonor.fragments.HistoryFragment"
+        android:name="edu.puo.foodonus.fragments.history.HistoryFragment"
         android:label="History"
         tools:layout="@layout/fragment_history" />
     <fragment
         android:id="@+id/splashFragment"
-        android:name="dev.robert.foodonor.fragments.SplashFragment"
+        android:name="edu.puo.foodonus.fragments.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -110,10 +116,16 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_donorsHomeFragment"
+            app:destination="@id/donorsHomeFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/donationsFragment"
-        android:name="dev.robert.foodonor.fragments.DonationsFragment"
+        android:name="edu.puo.foodonus.fragments.donations.DonationsFragment"
         android:label="Donations"
         tools:layout="@layout/fragment_donations" >
         <action
@@ -122,19 +134,51 @@
     </fragment>
     <dialog
         android:id="@+id/resetPasswordFragment"
-        android:name="dev.robert.foodonor.fragments.ResetPasswordFragment"
+        android:name="edu.puo.foodonus.fragments.auth.ResetPasswordFragment"
         android:label="ResetPasswordFragment" />
     <fragment
         android:id="@+id/donorLocationFragment"
-        android:name="dev.robert.foodonor.fragments.DonorLocationFragment"
-        android:label="fragment_donor_location"
+        android:name="edu.puo.foodonus.fragments.donate.DonorLocationFragment"
+        android:label="Donor Location"
         tools:layout="@layout/fragment_donor_location" >
         <argument
-            android:name="location"
-            app:argType="dev.robert.foodonor.model.Donation" />
+            android:name="donation"
+            app:argType="edu.puo.foodonus.model.Donation" />
     </fragment>
     <fragment
         android:id="@+id/contactUsFragment"
-        android:name="dev.robert.foodonor.fragments.ContactUsFragment"
+        android:name="edu.puo.foodonus.fragments.contact.ContactUsFragment"
         android:label="Contact Us" />
+    <fragment
+        android:id="@+id/donorsHomeFragment"
+        android:name="edu.puo.foodonus.fragments.home.DonorsHomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_donors_home" >
+        <action
+            android:id="@+id/action_donorsHomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/donorsHomeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_donorsHomeFragment_to_donateFragment"
+            app:destination="@id/donateFragment" />
+        <action
+            android:id="@+id/action_donorsHomeFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_donorsHomeFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_donorsHomeFragment_to_contactUsFragment"
+            app:destination="@id/contactUsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminHomeFragment"
+        android:name="edu.puo.foodonus.fragments.home.AdminHomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_admin_home" >
+        <action
+            android:id="@+id/action_adminHomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.home.DonorsHomeFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:title="Donor Home"
+                app:titleTextColor="@color/white"
+                android:id="@+id/toolbar"/>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:rowCount="4"
+            android:columnCount="2"
+            android:alignmentMode="alignMargins"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDonate"
+                android:clickable="true"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/orange"
+                app:strokeWidth="1dp"
+                android:layout_margin="10dp"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_donate"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Donate"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="130dp"
+                    android:layout_gravity="center_horizontal" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!--<com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardReceive"
+                android:clickable="true"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/orange"
+                app:strokeWidth="1dp"
+                android:layout_margin="10dp"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_receive"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Receive"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="130dp"
+                    android:layout_gravity="center_horizontal"/>
+            </com.google.android.material.card.MaterialCardView>-->
+
+            <!--<com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardFoodmap"
+                android:clickable="true"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/orange"
+                app:strokeWidth="1dp"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_pin_map_location_svgrepo_com"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Food Map"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="130dp"
+                    android:layout_gravity="center_horizontal"/>
+            </com.google.android.material.card.MaterialCardView>-->
+
+           <!-- <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMyPin"
+                android:clickable="true"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/orange"
+                app:strokeWidth="1dp"
+                android:layout_margin="10dp"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_location_svgrepo_com"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Donations"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="130dp"
+                    android:layout_gravity="center_horizontal" />
+            </com.google.android.material.card.MaterialCardView>-->
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardHistory"
+                android:clickable="true"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/orange"
+                app:strokeWidth="1dp"
+                android:layout_margin="10dp"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_baseline_history_24"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/history"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="130dp"
+                    android:layout_gravity="center_horizontal" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAboutus"
+                android:clickable="true"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/orange"
+                app:strokeWidth="1dp"
+                android:layout_margin="10dp"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_group_people_svgrepo_com"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_us"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="130dp"
+                    android:layout_gravity="center_horizontal"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardContact"
+                android:clickable="true"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/orange"
+                app:strokeWidth="1dp"
+                android:layout_margin="10dp"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_customer_service_svgrepo_com"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_us"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="130dp"
+                    android:layout_gravity="center_horizontal"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardLogout"
+                android:clickable="true"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/orange"
+                app:strokeWidth="1dp"
+                android:layout_margin="10dp"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_exit_logout_svgrepo_com"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/logout"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="130dp"
+                    android:layout_gravity="center_horizontal"/>
+            </com.google.android.material.card.MaterialCardView>
+
+        </GridLayout>
+    </LinearLayout>
+
+</ScrollView>

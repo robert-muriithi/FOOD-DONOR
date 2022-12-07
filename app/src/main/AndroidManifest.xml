@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="dev.robert.foodonor">
+    package="edu.puo.foodonus">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:name=".Foodonor"
+        android:name="edu.puo.foodonus.Foodonor"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -20,7 +20,7 @@
         android:theme="@style/Theme.FOODONOR"
         tools:targetApi="s">
         <activity
-            android:name=".activities.HelpActivity"
+            android:name="edu.puo.foodonus.activities.HelpActivity"
             android:exported="false" />
 
         <meta-data
@@ -28,7 +28,7 @@
             android:value="AIzaSyCUtZQamwKp53YhIbSs_Vh6TIrDox3Cda4" />
 
         <activity
-            android:name=".activities.MainActivity"
+            android:name="edu.puo.foodonus.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -12,7 +12,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "dev.robert.foodonor"
+        applicationId "edu.puo.foodonus"
         minSdk 21
         targetSdk 31
         versionCode 1

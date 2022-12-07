@@ -20,7 +20,7 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
 
-            <com.google.android.material.card.MaterialCardView
+            <!--<com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardDonate"
                 android:clickable="true"
                 android:layout_width="160dp"
@@ -45,7 +45,7 @@
                     android:textColor="@color/black"
                     android:layout_marginTop="130dp"
                     android:layout_gravity="center_horizontal" />
-            </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>-->
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardReceive"
@@ -128,7 +128,7 @@
                     android:layout_gravity="center_horizontal" />
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
+           <!-- <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardHistory"
                 android:clickable="true"
                 android:layout_width="160dp"
@@ -153,7 +153,7 @@
                     android:textColor="@color/black"
                     android:layout_marginTop="130dp"
                     android:layout_gravity="center_horizontal" />
-            </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>-->
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardAboutus"
