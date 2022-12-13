@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.whenCreated
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -25,6 +27,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import edu.puo.foodonus.R
 
 import edu.puo.foodonus.databinding.ActivityMainBinding
+import edu.puo.foodonus.repository.RepositoryImpl
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -54,7 +58,9 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.homeFragment
+                R.id.homeFragment,
+                R.id.adminHomeFragment,
+                R.id.donorsHomeFragment
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -79,7 +85,14 @@ class MainActivity : AppCompatActivity() {
         val header = binding.navigationView.getHeaderView(0)
         val imageView = header.findViewById<ImageView>(R.id.imageView)
         val userImage = auth.currentUser?.photoUrl
-        val userEmail = auth.currentUser?.email
+        lifecycleScope.launch {
+            whenCreated {
+               RepositoryImpl.getInstance().getCurrentUserEmail {
+                   val userEmailText = header.findViewById<android.widget.TextView>(R.id.useremail)
+                   userEmailText.text = it
+               }
+            }
+        }
 
         Glide
             .with(this)
@@ -88,8 +101,7 @@ class MainActivity : AppCompatActivity() {
             .placeholder(R.drawable.ic_person)
             .into(imageView)
 
-        val userEmailText = header.findViewById<android.widget.TextView>(R.id.useremail)
-        userEmailText.text = userEmail
+
 
         binding.navigationView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {

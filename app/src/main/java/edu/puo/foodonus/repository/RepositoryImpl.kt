@@ -1,12 +1,15 @@
 package edu.puo.foodonus.repository
 
 import android.app.Application
+import android.util.Log
+import com.google.api.LogDescriptor
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import edu.puo.foodonus.model.Donation
 import edu.puo.foodonus.model.User
 import edu.puo.foodonus.utils.Resource
+import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class RepositoryImpl @Inject constructor(
@@ -14,6 +17,17 @@ class RepositoryImpl @Inject constructor(
     private val auth: FirebaseAuth,
 ) : MainRepository {
     private val TAG = "RepositoryImpl"
+
+    companion object{
+        @Volatile
+        private var instance: RepositoryImpl? = null
+        fun getInstance() = instance ?: synchronized(this) {
+            instance ?: RepositoryImpl(
+                FirebaseFirestore.getInstance(),
+                FirebaseAuth.getInstance()
+            ).also { instance = it }
+        }
+    }
 
 
     override suspend fun getDonations(result: (Resource<List<Donation>>) -> Unit) {
@@ -207,6 +221,56 @@ class RepositoryImpl @Inject constructor(
                 result.invoke(
                     Resource.Error(it.message.toString())
                 )
+            }
+    }
+
+    override suspend fun deleteUser(userId: String, result: (Resource<String>) -> Unit) {
+        database.collection("users")
+            .document(userId)
+            .delete()
+            .addOnSuccessListener {
+                result.invoke(Resource.Success("User deleted"))
+            }
+            .addOnFailureListener {
+                result.invoke(Resource.Error(it.message.toString() ))
+            }
+    }
+
+    override suspend fun deleteDonation(donationId: String, result: (Resource<String>) -> Unit) {
+        database.collection("donations")
+            .document(donationId)
+            .delete()
+            .addOnSuccessListener {
+                result.invoke(Resource.Success("Deleted Successfully"))
+            }
+            .addOnFailureListener {
+                result.invoke(Resource.Error(it.message.toString()))
+            }
+    }
+
+    override suspend fun getUserId(email: String, result: (String) -> Unit) {
+       val query =  database.collection("users")
+            .whereEqualTo("email", email)
+            .get()
+            .await()
+        for (i in query.documents){
+            val id = i.id
+            result.invoke(id)
+        }
+    }
+
+    override suspend fun getCurrentUserEmail(result: (String) -> Unit) {
+        database.collection("users")
+            .document(auth.currentUser!!.uid)
+            .get()
+            .addOnSuccessListener { snapshot ->
+                val user = snapshot.toObject(User::class.java)
+                if (user != null) {
+                    result.invoke(user.email!!)
+                }
+            }
+            .addOnFailureListener {
+                Log.e(TAG, "Error: ${it.message}")
             }
     }
 }

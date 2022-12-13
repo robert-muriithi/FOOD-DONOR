@@ -1,13 +1,23 @@
 package edu.puo.foodonus.adapter
 
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import edu.puo.foodonus.databinding.DonationItemBinding
+import edu.puo.foodonus.fragments.home.AdminHomeFragment
 import edu.puo.foodonus.model.Donation
+import edu.puo.foodonus.repository.RepositoryImpl
+import edu.puo.foodonus.utils.Resource
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class AllDonations : ListAdapter<Donation, AllDonations.DonationsViewHolder>(DonationDiffCallback) {
+class AllDonations(val instance: AdminHomeFragment) : ListAdapter<Donation, AllDonations.DonationsViewHolder>(DonationDiffCallback) {
     object DonationDiffCallback : androidx.recyclerview.widget.DiffUtil.ItemCallback<Donation>() {
         override fun areItemsTheSame(oldItem: Donation, newItem: Donation): Boolean {
             return oldItem.id == newItem.id
@@ -24,6 +34,42 @@ class AllDonations : ListAdapter<Donation, AllDonations.DonationsViewHolder>(Don
 
     override fun onBindViewHolder(holder: DonationsViewHolder, position: Int) {
         val item = getItem(position)
+        holder.itemView.setOnLongClickListener {
+            val context = holder.itemView.context
+            val builder = AlertDialog.Builder(context)
+            builder.setMessage("Do you want to delete this Donation?")
+            builder.setTitle("Alert !")
+            builder.setCancelable(false)
+            builder.setPositiveButton("Yes"
+            ) { _: DialogInterface?, _: Int ->
+                CoroutineScope(Dispatchers.IO).launch {
+                    var id = item.id
+                    RepositoryImpl.getInstance().deleteDonation(id!!){
+                        when(it){
+                            is Resource.Error -> {
+
+                            }
+                            is Resource.Success -> {
+                                Toast.makeText(context, it.data, Toast.LENGTH_SHORT).show()
+                                notifyDataSetChanged()
+                                instance.fetchData()
+                            }
+                            is Resource.Error -> {
+
+                            }
+                        }
+                    }
+                }
+            }
+            builder.setNegativeButton("No"
+            ) { dialog: DialogInterface, _: Int ->
+                dialog.cancel()
+            }
+
+            val alertDialog = builder.create()
+            alertDialog.show()
+            true
+        }
         holder.bind(item)
     }
 

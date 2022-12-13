@@ -21,8 +21,9 @@ import javax.inject.Inject
 class AdminHomeFragment : Fragment(), MenuProvider {
     private lateinit var binding: FragmentAdminHomeBinding
     private val viewModel by viewModels<AdminHomeViewModel>()
-    private val usersAdapter by lazy { AllUsers() }
-    private val donationsAdapter by lazy { AllDonations() }
+    private val instance = this
+    private val usersAdapter by lazy { AllUsers(instance) }
+    private val donationsAdapter by lazy { AllDonations(instance) }
     @Inject lateinit var auth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +33,8 @@ class AdminHomeFragment : Fragment(), MenuProvider {
         binding = FragmentAdminHomeBinding.inflate(inflater, container, false)
         val view = binding.root
         requireActivity().addMenuProvider(this, viewLifecycleOwner )
-        (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
+        //(activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
+        (activity as AppCompatActivity).supportActionBar?.show()
         binding.allUsers.adapter = usersAdapter
         binding.allDonations.adapter = donationsAdapter
         fetchData()
@@ -40,7 +42,7 @@ class AdminHomeFragment : Fragment(), MenuProvider {
         return view
     }
 
-    private fun fetchData() {
+     fun fetchData() {
         viewModel.getAllUsers()
         viewModel.getAllDonations()
         viewModel.getAllUsersTotalNumber()

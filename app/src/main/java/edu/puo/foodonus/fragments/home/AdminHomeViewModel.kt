@@ -32,6 +32,12 @@ class AdminHomeViewModel @Inject constructor(
     private val _allDonations = MutableLiveData<Resource<List<Donation>>>()
     val allDonations = _allDonations as LiveData<Resource<List<Donation>>>
 
+    private val _deleteUser = MutableLiveData<Resource<String>>()
+    val deleteUser = _deleteUser as  LiveData<Resource<String>>
+
+    private val _deleteDonation = MutableLiveData<Resource<String>>()
+    val deleteDonation = _deleteDonation as  LiveData<Resource<String>>
+
 
     fun getAllUsers() {
         viewModelScope.launch {
@@ -94,6 +100,32 @@ class AdminHomeViewModel @Inject constructor(
                 }
             }catch (e: Exception) {
                 _allDonations.value = Resource.Error(e.message.toString())
+            }
+        }
+    }
+
+    private fun deleteUser(userId: String) {
+        viewModelScope.launch {
+            _deleteUser.value = Resource.Loading
+            try {
+                repository.deleteUser(userId){
+                    _deleteUser.value = it
+                }
+            }catch (e: Exception){
+                _deleteUser.value = Resource.Error(e.message.toString())
+            }
+        }
+    }
+
+    private fun deleteDonation(donationId: String) {
+        viewModelScope.launch {
+            _deleteDonation.value = Resource.Loading
+            try {
+                repository.deleteDonation(donationId){
+                    _deleteDonation.value = it
+                }
+            }catch (e: Exception){
+                _deleteDonation.value = Resource.Error(e.message.toString())
             }
         }
     }

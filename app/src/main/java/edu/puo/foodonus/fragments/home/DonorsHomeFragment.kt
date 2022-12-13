@@ -24,7 +24,8 @@ class DonorsHomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentDonorsHomeBinding.inflate(inflater, container, false)
         val view = binding.root
-        (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
+        (activity as AppCompatActivity).supportActionBar?.show()
+        //(activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
         binding.cardLogout.setOnClickListener {
             auth.signOut()
             findNavController().navigate(R.id.action_donorsHomeFragment_to_loginFragment)

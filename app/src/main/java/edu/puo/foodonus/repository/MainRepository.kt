@@ -14,5 +14,9 @@ interface MainRepository {
     suspend fun getTotalDonors(result: (Resource<Int>) -> Unit)
     suspend fun getAllDonations(result: (Resource<List<Donation>>) -> Unit)
     suspend fun getAllUsers(result: (Resource<List<User>>) -> Unit)
+    suspend fun deleteUser(userId: String, result: (Resource<String>) -> Unit)
+    suspend fun deleteDonation(donationId: String,result: (Resource<String>) -> Unit)
+    suspend fun getUserId(email: String, result: (String) -> Unit)
+    suspend fun getCurrentUserEmail(result: (String) -> Unit)
 
 }
